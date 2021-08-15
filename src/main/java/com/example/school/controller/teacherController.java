@@ -2,9 +2,12 @@ package com.example.school.controller;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,7 +21,8 @@ import com.example.school.service.teacherService;
 
 @RestController
 public class teacherController {
-	
+	private Logger logger = LoggerFactory.getLogger(studentController.class);
+
 	@Autowired
 	private teacherService TeacherService;
 
@@ -32,15 +36,16 @@ public class teacherController {
 	
 	//get one student details
 	@GetMapping("/teachers/{teacherId}")
-	public ResponseEntity<HttpStatus> getTeacher(@PathVariable String teacherId) {
+	public Teacher getTeacher(@PathVariable String teacherId) {
 
-		try {
-			this.TeacherService.getTeacher(Integer.parseInt(teacherId));
-			return new ResponseEntity<>(HttpStatus.OK);
-		}
-		catch(Exception e) {
-			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-		}
+//		try {
+			return this.TeacherService.getTeacher(Integer.parseInt(teacherId));
+//			return teacher;
+//			return new ResponseEntity<>(HttpStatus.OK);
+//		}
+//		catch(Exception e) {
+//			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+//		}
 
 	}
 	
@@ -69,4 +74,8 @@ public class teacherController {
 		}
 	}
 	
+	@Scheduled(cron = "*/10 * * * * *")
+	public void scheduledJobTeacher() {
+		logger.info("No of students in the DB : " + TeacherService.getTeachers().size());
+	}
 }

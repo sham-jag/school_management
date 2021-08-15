@@ -24,8 +24,8 @@ public class teacherServiceImpl implements teacherService {
 	}
 
 	@Override
-	public Teacher getTeacher(int parseInt) {
-		return TeacherDao.getById(parseInt);
+	public Teacher getTeacher(int id) {
+		return TeacherDao.findById(id).get();
 	}
 
 	@Override

@@ -24,8 +24,8 @@ public class subjectServiceImpl implements subjectService {
 	}
 
 	@Override
-	public Subject getSubject(int parseInt) {
-		return SubjectDao.getById(parseInt);
+	public Subject getSubject(int id) {
+		return SubjectDao.findById(id).get();
 	}
 
 	@Override

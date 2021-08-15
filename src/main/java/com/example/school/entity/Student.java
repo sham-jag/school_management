@@ -9,8 +9,8 @@ import javax.persistence.Id;
 public class Student {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int student_id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
 	
     private String student_fname;
     private String student_lname;
@@ -23,7 +23,7 @@ public class Student {
 	public Student(int student_id, String student_fname, String student_lname, String dob, String phone,
 			String address, String gender, int class_id) {
 		super();
-		this.student_id = student_id;
+		this.id = student_id;
 		this.student_fname = student_fname;
 		this.student_lname = student_lname;
 		this.dob = dob;
@@ -39,11 +39,11 @@ public class Student {
 	}
 
 	public int getStudent_id() {
-		return student_id;
+		return id;
 	}
 
 	public void setStudent_id(int student_id) {
-		this.student_id = student_id;
+		this.id = student_id;
 	}
 
 	public String getStudent_fname() {
@@ -104,7 +104,7 @@ public class Student {
 
 	@Override
 	public String toString() {
-		return "Student [student_id=" + student_id + ", student_fname=" + student_fname + ", student_lname="
+		return "Student [student_id=" + id + ", student_fname=" + student_fname + ", student_lname="
 				+ student_lname + ", dob=" + dob + ", phone=" + phone + ", address=" + address + ", gender=" + gender
 				+ ", class_id=" + class_id + "]";
 	}

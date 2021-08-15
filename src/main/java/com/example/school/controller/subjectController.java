@@ -32,15 +32,17 @@ public class subjectController {
 	
 	//get one student details
 	@GetMapping("/subjects/{subjectId}")
-	public ResponseEntity<HttpStatus> getSubject(@PathVariable String subjectId) {
+	public Subject getSubject(@PathVariable String subjectId) {
 
-		try {
-			this.SubjectService.getSubject(Integer.parseInt(subjectId));
-			return new ResponseEntity<>(HttpStatus.OK);
-		}
-		catch(Exception e) {
-			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-		}
+//		try {
+			Subject subject =  this.SubjectService.getSubject(Integer.parseInt(subjectId));
+			return subject;
+//			return new ResponseEntity<>(HttpStatus.OK);
+//		}
+//		catch(Exception e) {
+////			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+//			return new Subject();
+//		}
 
 	}
 	

@@ -1,19 +1,22 @@
 package com.example.school.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Class {
 	
 	@Id
-	private int class_id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
     private String section;
     private int teacher_id;
     
 	public Class(int class_id, String section, int teacher_id) {
 		super();
-		this.class_id = class_id;
+		this.id = class_id;
 		this.section = section;
 		this.teacher_id = teacher_id;
 	}
@@ -24,11 +27,11 @@ public class Class {
 	}
 
 	public int getClass_id() {
-		return class_id;
+		return id;
 	}
 
 	public void setClass_id(int class_id) {
-		this.class_id = class_id;
+		this.id = class_id;
 	}
 
 	public String getSection() {
@@ -49,7 +52,7 @@ public class Class {
 
 	@Override
 	public String toString() {
-		return "Class [class_id=" + class_id + ", section=" + section + ", teacher_id=" + teacher_id + "]";
+		return "Class [class_id=" + id + ", section=" + section + ", teacher_id=" + teacher_id + "]";
 	}
 
 
