@@ -29,6 +29,18 @@ public class Class {
     @OneToMany(mappedBy="class", cascade=CascadeType.ALL)
     List<Student> student;
     
+	public List<Student> getStudent() {
+		return student;
+	}
+
+	public void setStudent(List<Student> student) {
+		this.student = student;
+	}
+
+	public void setTeacher(Teacher teacher) {
+		this.teacher = teacher;
+	}
+
 	public Class(int id, String section, Teacher teacher) {
 		super();
 		this.id = id;

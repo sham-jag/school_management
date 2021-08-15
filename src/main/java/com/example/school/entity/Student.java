@@ -32,17 +32,17 @@ public class Student {
     private Class cl;
     
     
-    SimpleDateFormat sdf=new SimpleDateFormat("dd/MM/yyyy");
-	Date date_of_birth = null;
-	try {
-	date_of_birth=sdf.parse(this.dob);
-	}
-	catch(ParseException e) {
-		e.printStackTrace();
-	}
+//    SimpleDateFormat sdf=new SimpleDateFormat("dd/MM/yyyy");
+//	Date date_of_birth = null;
+//	try {
+//	date_of_birth=sdf.parse(this.dob);
+//	}
+//	catch(ParseException e) {
+//		e.printStackTrace();
+//	}
 	
-	sdf=new SimpleDateFormat("dd/MM/yyyy");
-	String student_dob=sdf.format(date_of_birth);
+//	sdf=new SimpleDateFormat("dd/MM/yyyy");
+//	String student_dob=sdf.format(date_of_birth);
 
     
 	public Student(int student_id, String student_fname, String student_lname, String dob, String phone,
@@ -57,18 +57,7 @@ public class Student {
 		this.gender = gender;
 		this.cl = cl;
 	}
-//	
-//	SimpleDateFormat sdf=new SimpleDateFormat("dd/MM/yyyy");
-//	Date date_of_birth = null;
-//	try {
-//	date_of_birth=sdf.parse(this.dob);
-//	}
-//	catch(ParseException e) {
-//		e.printStackTrace();
-//	}
-//	
-//	sdf=new SimpleDateFormat("dd/MM/yyyy");
-//	String student_dob=sdf.format(date_of_birth);
+
 
 
 	public Student() {
@@ -101,11 +90,11 @@ public class Student {
 	}
 
 	public String getDob() {
-		return student_dob;
+		return dob;
 	}
 
 	public void setDob(String dob) {
-		this.dob = student_dob;
+		this.dob = dob;
 	}
 
 	public String getPhone() {
@@ -143,7 +132,7 @@ public class Student {
 	@Override
 	public String toString() {
 		return "Student [id=" + id + ", student_fname=" + student_fname + ", student_lname=" + student_lname + ", dob="
-				+ student_dob + ", phone=" + phone + ", address=" + address + ", gender=" + gender + ", cl=" + cl + "]";
+				+ dob + ", phone=" + phone + ", address=" + address + ", gender=" + gender + ", cl=" + cl + "]";
 	}
 
 
