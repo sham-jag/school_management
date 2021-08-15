@@ -38,16 +38,16 @@ public class StudentController {
 	
 	//get one student details
 	@GetMapping("/students/{studentId}")
-	public ResponseEntity<HttpStatus> getStudent(@PathVariable String studentId) {
-//		return this.StudentService.getStudent(Integer.parseInt(studentId));
+	public Student getStudent(@PathVariable String studentId) {
+		return this.studentService.getStudent(Integer.parseInt(studentId));
 		
-		try {
-			this.studentService.getStudent(Integer.parseInt(studentId));
-			return new ResponseEntity<>(HttpStatus.OK);
-		}
-		catch(Exception e) {
-			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-		}
+//		try {
+//			this.studentService.getStudent(Integer.parseInt(studentId));
+//			return new ResponseEntity<>(HttpStatus.OK);
+//		}
+//		catch(Exception e) {
+//			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+//		}
 
 	}
 	

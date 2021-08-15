@@ -21,10 +21,10 @@ public class ReportGenerator {
 	private TeacherService t;
 	
 	
-	@Scheduled(cron = "*/10 * * * * *")
+	@Scheduled(cron = "0 * * ? * *")
 	public void generateReport() {
 		logger.info("***************  REPORT ***************");
 		logger.info("Total teachers : " + t.getTeachers().size());
-//		logger.info("Total students : " + s.getStudents().size());
+		logger.info("Total students : " + s.getStudents().size());
 	}
 }

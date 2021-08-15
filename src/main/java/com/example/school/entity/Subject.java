@@ -11,13 +11,13 @@ public class Subject {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-    private String subject_name;
-    
-	public Subject(int id, String subject_name) {
+	
+    private String name;
+
+	public Subject(int id, String name) {
 		super();
 		this.id = id;
-		this.subject_name = subject_name;
-		
+		this.name = name;
 	}
 
 	public Subject() {
@@ -25,26 +25,26 @@ public class Subject {
 		// TODO Auto-generated constructor stub
 	}
 
-	public int getSubject_id() {
+	public int getId() {
 		return id;
 	}
 
-	public void setSubject_id(int subject_id) {
-		this.id = subject_id;
+	public void setId(int id) {
+		this.id = id;
 	}
 
-	public String getSubject_name() {
-		return subject_name;
+	public String getName() {
+		return name;
 	}
 
-	public void setSubject_name(String subject_name) {
-		this.subject_name = subject_name;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	@Override
 	public String toString() {
-		return "Subject [subject_id=" + id + ", subject_name=" + subject_name + "]";
+		return "Subject [id=" + id + ", name=" + name + "]";
 	}
 
-
+    
 }

@@ -25,23 +25,18 @@ public class ClassController {
 
 	//get all student details
 	@GetMapping("/classes")
-	public List<Class> getClasss(){
+	public List<Class> getClasses(){
 		
-		return this.classService.getClasss();
+		return this.classService.getClasses();
 	}
 	
 	//get one student details
 	@GetMapping("/classes/{classId}")
-	public ResponseEntity<HttpStatus> getClass(@PathVariable String classId) {
+	public Class getClass(@PathVariable String classId) {
 
-		try {
-			this.classService.getClass(Integer.parseInt(classId));
-			return new ResponseEntity<>(HttpStatus.OK);
-		}
-		catch(Exception e) {
-			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-		}
-
+	
+			return this.classService.getClass(Integer.parseInt(classId));
+		
 	}
 	
 	//add one student

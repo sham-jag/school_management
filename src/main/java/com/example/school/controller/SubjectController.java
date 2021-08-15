@@ -35,8 +35,7 @@ public class SubjectController {
 	public Subject getSubject(@PathVariable String subjectId) {
 
 //		try {
-			Subject subject =  this.subjectService.getSubject(Integer.parseInt(subjectId));
-			return subject;
+			return this.subjectService.getSubject(Integer.parseInt(subjectId));
 //			return new ResponseEntity<>(HttpStatus.OK);
 //		}
 //		catch(Exception e) {
@@ -55,8 +54,7 @@ public class SubjectController {
 	//update one student detail
 	@PutMapping("/subjects")
 	public Subject updateSubjectt(@RequestBody Subject subject) {
-		return this.subjectService.updateSubject(subject);
-		
+		return this.subjectService.updateSubject(subject);		
 	}
 	
 	//delete one student

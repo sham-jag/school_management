@@ -40,8 +40,8 @@ public class SubjectServiceImpl implements SubjectService {
 	}
 	
 	@Override
-	public void deleteSubject(int parseInt) {
-		Subject entity = subjectDao.getById(parseInt);
+	public void deleteSubject(int id) {
+		Subject entity = subjectDao.getById(id);
 		subjectDao.delete(entity);
 	}
 	

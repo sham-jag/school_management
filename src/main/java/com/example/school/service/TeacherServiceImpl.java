@@ -40,8 +40,8 @@ public class TeacherServiceImpl implements TeacherService {
 	}
 	
 	@Override
-	public void deleteTeacher(int parseInt) {
-		Teacher entity = teacherDao.getById(parseInt);
+	public void deleteTeacher(int id) {
+		Teacher entity = teacherDao.getById(id);
 		teacherDao.delete(entity);
 	}
 	

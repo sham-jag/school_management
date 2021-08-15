@@ -8,12 +8,12 @@ public interface SubjectService {
 	
 	public List<Subject> getSubjects();
 	
-	public Subject getSubject(int parseInt);
+	public Subject getSubject(int id);
 	
 	public Subject addSubject(Subject subject);
 	
 	public Subject updateSubject(Subject subject);
 	
-	public void deleteSubject(int parseInt);
+	public void deleteSubject(int id);
 
 }

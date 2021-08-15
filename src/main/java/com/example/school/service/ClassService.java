@@ -6,7 +6,7 @@ import com.example.school.entity.Class;
 
 public interface ClassService {
 	
-	public List<Class> getClasss();
+	public List<Class> getClasses();
 	
 	public Class getClass(int parseInt);
 	

@@ -23,8 +23,8 @@ public class StudentServiceImpl implements StudentService {
 	}
 
 	@Override
-	public Student getStudent(int parseInt) {
-		return studentDao.getById(parseInt);
+	public Student getStudent(int id) {
+		return studentDao.findById(id).get();
 	}
 
 	@Override
@@ -40,8 +40,8 @@ public class StudentServiceImpl implements StudentService {
 	}
 	
 	@Override
-	public void deleteStudent(int parseInt) {
-		Student entity = studentDao.getById(parseInt);
+	public void deleteStudent(int id) {
+		Student entity = studentDao.getById(id);
 		studentDao.delete(entity);
 	}
 	

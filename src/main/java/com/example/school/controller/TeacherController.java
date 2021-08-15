@@ -54,7 +54,7 @@ public class TeacherController {
 	
 	//update one student detail
 	@PutMapping("/teachers")
-	public Teacher updateTeachert(@RequestBody Teacher teacher) {
+	public Teacher updateTeacher(@RequestBody Teacher teacher) {
 		return this.teacherService.updateTeacher(teacher);
 		
 	}

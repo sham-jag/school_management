@@ -1,6 +1,5 @@
 package com.example.school.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,14 +17,14 @@ public class ClassServiceImpl implements ClassService {
 	}
 
 	@Override
-	public List<Class> getClasss() {
+	public List<Class> getClasses() {
 		// TODO Auto-generated method stub
 		return classDao.findAll();
 	}
 
 	@Override
-	public Class getClass(int parseInt) {
-		return classDao.getById(parseInt);
+	public Class getClass(int id) {
+		return classDao.findById(id).get();
 	}
 
 	@Override
@@ -44,6 +43,7 @@ public class ClassServiceImpl implements ClassService {
 	public void deleteClass(int parseInt) {
 		Class entity = classDao.getById(parseInt);
 		classDao.delete(entity);
+		
 	}
 	
 	
