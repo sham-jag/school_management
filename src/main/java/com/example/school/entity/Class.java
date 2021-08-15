@@ -1,24 +1,39 @@
 package com.example.school.entity;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="class")
 public class Class {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-    private String section;
-    private int teacher_id;
+
+	private String section;
+	
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="teacher_id", referencedColumnName="id")
+    private Teacher teacher;
     
-	public Class(int class_id, String section, int teacher_id) {
+    @OneToMany(mappedBy="class", cascade=CascadeType.ALL)
+    List<Student> student;
+    
+	public Class(int id, String section, Teacher teacher) {
 		super();
-		this.id = class_id;
+		this.id = id;
 		this.section = section;
-		this.teacher_id = teacher_id;
+		this.teacher = teacher;
 	}
 
 	public Class() {
@@ -26,12 +41,12 @@ public class Class {
 		// TODO Auto-generated constructor stub
 	}
 
-	public int getClass_id() {
+	public int getId() {
 		return id;
 	}
 
-	public void setClass_id(int class_id) {
-		this.id = class_id;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getSection() {
@@ -42,17 +57,17 @@ public class Class {
 		this.section = section;
 	}
 
-	public int getTeacher_id() {
-		return teacher_id;
+	public Teacher getTeacher() {
+		return teacher;
 	}
 
-	public void setTeacher_id(int subject_id) {
-		this.teacher_id = subject_id;
+	public void setTeacher_id(Teacher teacher) {
+		this.teacher=teacher;
 	}
 
 	@Override
 	public String toString() {
-		return "Class [class_id=" + id + ", section=" + section + ", teacher_id=" + teacher_id + "]";
+		return "Class [id=" + id + ", section=" + section + ", teacher=" + teacher + "]";
 	}
 
 

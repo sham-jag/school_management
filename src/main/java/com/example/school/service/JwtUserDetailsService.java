@@ -1,4 +1,4 @@
-package com.example.school.security;
+package com.example.school.service;
 
 import java.util.ArrayList;
 

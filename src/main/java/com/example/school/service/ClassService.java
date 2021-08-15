@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.example.school.entity.Class;
 
-public interface classService {
+public interface ClassService {
 	
 	public List<Class> getClasss();
 	

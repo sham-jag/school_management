@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.example.school.entity.Student;
 
-public interface studentService {
+public interface StudentService {
 	
 	public List<Student> getStudents();
 	

@@ -1,11 +1,20 @@
 package com.example.school.entity;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="student")
 public class Student {
 	
 	@Id
@@ -18,10 +27,26 @@ public class Student {
     private String phone;
     private String address;
     private String gender;
-    private int class_id;
+    @ManyToOne(cascade= {CascadeType.MERGE, CascadeType.DETACH, CascadeType.PERSIST, CascadeType.REFRESH})
+    @JoinColumn(name="clas_id")
+    private Class cl;
+    
+    
+    SimpleDateFormat sdf=new SimpleDateFormat("dd/MM/yyyy");
+	Date date_of_birth = null;
+	try {
+	date_of_birth=sdf.parse(this.dob);
+	}
+	catch(ParseException e) {
+		e.printStackTrace();
+	}
+	
+	sdf=new SimpleDateFormat("dd/MM/yyyy");
+	String student_dob=sdf.format(date_of_birth);
+
     
 	public Student(int student_id, String student_fname, String student_lname, String dob, String phone,
-			String address, String gender, int class_id) {
+			String address, String gender, Class cl) {
 		super();
 		this.id = student_id;
 		this.student_fname = student_fname;
@@ -30,8 +55,21 @@ public class Student {
 		this.phone = phone;
 		this.address = address;
 		this.gender = gender;
-		this.class_id = class_id;
+		this.cl = cl;
 	}
+//	
+//	SimpleDateFormat sdf=new SimpleDateFormat("dd/MM/yyyy");
+//	Date date_of_birth = null;
+//	try {
+//	date_of_birth=sdf.parse(this.dob);
+//	}
+//	catch(ParseException e) {
+//		e.printStackTrace();
+//	}
+//	
+//	sdf=new SimpleDateFormat("dd/MM/yyyy");
+//	String student_dob=sdf.format(date_of_birth);
+
 
 	public Student() {
 		super();
@@ -63,11 +101,11 @@ public class Student {
 	}
 
 	public String getDob() {
-		return dob;
+		return student_dob;
 	}
 
 	public void setDob(String dob) {
-		this.dob = dob;
+		this.dob = student_dob;
 	}
 
 	public String getPhone() {
@@ -94,19 +132,20 @@ public class Student {
 		this.gender = gender;
 	}
 
-	public int getClass_id() {
-		return class_id;
+	public Class getCl() {
+		return cl;
 	}
 
-	public void setClass_id(int class_id) {
-		this.class_id = class_id;
+	public void setCl(Class cl) {
+		this.cl = cl;
 	}
 
 	@Override
 	public String toString() {
-		return "Student [student_id=" + id + ", student_fname=" + student_fname + ", student_lname="
-				+ student_lname + ", dob=" + dob + ", phone=" + phone + ", address=" + address + ", gender=" + gender
-				+ ", class_id=" + class_id + "]";
+		return "Student [id=" + id + ", student_fname=" + student_fname + ", student_lname=" + student_lname + ", dob="
+				+ student_dob + ", phone=" + phone + ", address=" + address + ", gender=" + gender + ", cl=" + cl + "]";
 	}
+
+
 
 }

@@ -1,9 +1,12 @@
 package com.example.school.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Teacher {
@@ -16,10 +19,15 @@ public class Teacher {
     private String phone;
     private String address;
     private String gender;
-    private int subject_id;
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="subject_id", referencedColumnName="id")
+	private Subject subject;
+    
+    @OneToOne(mappedBy="class")
+    private Class cl;
     
 	public Teacher(int id, String fname, String lname, String dob, String phone,
-			String address, String gender, int subject_id) {
+			String address, String gender, Subject subject) {
 		super();
 		this.id = id;
 		this.fname = fname;
@@ -27,7 +35,7 @@ public class Teacher {
 		this.phone = phone;
 		this.address = address;
 		this.gender = gender;
-		this.subject_id = subject_id;
+		this.subject = subject;
 	}
 
 	public Teacher() {
@@ -84,19 +92,19 @@ public class Teacher {
 		this.gender = gender;
 	}
 
-	public int getSubject_id() {
-		return subject_id;
+	public Subject getSubject_id() {
+		return subject;
 	}
 
-	public void setSubject_id(int subject_id) {
-		this.subject_id = subject_id;
+	public void setSubject_id(Subject subject) {
+		this.subject = subject;
 	}
 
 	@Override
 	public String toString() {
 		return "Teacher [id=" + id + ", fname=" + fname + ", lname="
 				+ lname + ", phone=" + phone + ", address=" + address + ", gender=" + gender
-				+ ", subject_id=" + subject_id + "]";
+				+ ", subject" + subject + "]";
 	}
 
 }

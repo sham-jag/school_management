@@ -1,49 +1,48 @@
 package com.example.school.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.school.dao.studentDao;
+import com.example.school.dao.StudentDao;
 import com.example.school.entity.Student;
 @Service
-public class studentServiceImpl implements studentService {
+public class StudentServiceImpl implements StudentService {
 	
 	@Autowired
-	private studentDao StudentDao;
+	private StudentDao studentDao;
 	
-	public studentServiceImpl() {
+	public StudentServiceImpl() {
 	}
 
 	@Override
 	public List<Student> getStudents() {
 		// TODO Auto-generated method stub
-		return StudentDao.findAll();
+		return studentDao.findAll();
 	}
 
 	@Override
 	public Student getStudent(int parseInt) {
-		return StudentDao.getById(parseInt);
+		return studentDao.getById(parseInt);
 	}
 
 	@Override
 	public Student addStudent(Student student) {
-		StudentDao.save(student);
+		studentDao.save(student);
 		return student;
 	}
 
 	@Override
 	public Student updateStudent(Student student) {
-		StudentDao.save(student);
+		studentDao.save(student);
 		return student;
 	}
 	
 	@Override
 	public void deleteStudent(int parseInt) {
-		Student entity = StudentDao.getById(parseInt);
-		StudentDao.delete(entity);
+		Student entity = studentDao.getById(parseInt);
+		studentDao.delete(entity);
 	}
 	
 	

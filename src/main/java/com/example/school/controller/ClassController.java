@@ -14,20 +14,20 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.school.entity.Class;
-import com.example.school.service.classService;
+import com.example.school.service.ClassService;
 
 @RestController
-public class classController {
+public class ClassController {
 	
 	@Autowired
-	private classService ClassService;
+	private ClassService classService;
 
 
 	//get all student details
 	@GetMapping("/classes")
 	public List<Class> getClasss(){
 		
-		return this.ClassService.getClasss();
+		return this.classService.getClasss();
 	}
 	
 	//get one student details
@@ -35,7 +35,7 @@ public class classController {
 	public ResponseEntity<HttpStatus> getClass(@PathVariable String classId) {
 
 		try {
-			this.ClassService.getClass(Integer.parseInt(classId));
+			this.classService.getClass(Integer.parseInt(classId));
 			return new ResponseEntity<>(HttpStatus.OK);
 		}
 		catch(Exception e) {
@@ -47,13 +47,13 @@ public class classController {
 	//add one student
 	@PostMapping("/classes")
 	public Class addClass(@RequestBody Class cl) {
-		return this.ClassService.addClass(cl);
+		return this.classService.addClass(cl);
 	}
 	
 	//update one student detail
 	@PutMapping("/classes")
 	public Class updateClasst(@RequestBody Class cl) {
-		return this.ClassService.updateClass(cl);
+		return this.classService.updateClass(cl);
 		
 	}
 	
@@ -61,7 +61,7 @@ public class classController {
 	@DeleteMapping("/classes/{classId}")
 	public ResponseEntity<HttpStatus> deleteClass(@PathVariable String classId){
 		try {
-			this.ClassService.deleteClass(Integer.parseInt(classId));
+			this.classService.deleteClass(Integer.parseInt(classId));
 			return new ResponseEntity<>(HttpStatus.OK);
 		}
 		catch(Exception e) {

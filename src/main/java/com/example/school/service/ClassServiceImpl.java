@@ -6,44 +6,44 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.school.dao.classDao;
+import com.example.school.dao.ClassDao;
 import com.example.school.entity.Class;
 @Service
-public class classServiceImpl implements classService {
+public class ClassServiceImpl implements ClassService {
 	
 	@Autowired
-	private classDao ClassDao;
+	private ClassDao classDao;
 	
-	public classServiceImpl() {
+	public ClassServiceImpl() {
 	}
 
 	@Override
 	public List<Class> getClasss() {
 		// TODO Auto-generated method stub
-		return ClassDao.findAll();
+		return classDao.findAll();
 	}
 
 	@Override
 	public Class getClass(int parseInt) {
-		return ClassDao.getById(parseInt);
+		return classDao.getById(parseInt);
 	}
 
 	@Override
 	public Class addClass(Class cl) {
-		ClassDao.save(cl);
+		classDao.save(cl);
 		return cl;
 	}
 
 	@Override
 	public Class updateClass(Class cl) {
-		ClassDao.save(cl);
+		classDao.save(cl);
 		return cl;
 	}
 	
 	@Override
 	public void deleteClass(int parseInt) {
-		Class entity = ClassDao.getById(parseInt);
-		ClassDao.delete(entity);
+		Class entity = classDao.getById(parseInt);
+		classDao.delete(entity);
 	}
 	
 	

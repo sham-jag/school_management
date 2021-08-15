@@ -1,4 +1,4 @@
-package com.example.school.security;
+package com.example.school.controller;
 
 import java.util.Objects;
 
@@ -15,6 +15,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.example.school.security.JwtRequest;
+import com.example.school.security.JwtResponse;
+import com.example.school.util.JwtTokenUtil;
 
 
 @RestController

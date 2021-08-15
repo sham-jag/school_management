@@ -1,4 +1,4 @@
-package com.example.school.security;
+package com.example.school.util;
 
 import java.io.Serializable;
 import java.util.Date;

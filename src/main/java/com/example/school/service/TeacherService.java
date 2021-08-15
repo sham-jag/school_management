@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.example.school.entity.Teacher;
 
-public interface teacherService {
+public interface TeacherService {
 	
 	public List<Teacher> getTeachers();
 	

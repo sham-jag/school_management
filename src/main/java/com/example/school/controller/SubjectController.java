@@ -14,20 +14,20 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.school.entity.Subject;
-import com.example.school.service.subjectService;
+import com.example.school.service.SubjectService;
 
 @RestController
-public class subjectController {
+public class SubjectController {
 	
 	@Autowired
-	private subjectService SubjectService;
+	private SubjectService subjectService;
 
 
 	//get all student details
 	@GetMapping("/subjects")
 	public List<Subject> getSubjects(){
 		
-		return this.SubjectService.getSubjects();
+		return this.subjectService.getSubjects();
 	}
 	
 	//get one student details
@@ -35,7 +35,7 @@ public class subjectController {
 	public Subject getSubject(@PathVariable String subjectId) {
 
 //		try {
-			Subject subject =  this.SubjectService.getSubject(Integer.parseInt(subjectId));
+			Subject subject =  this.subjectService.getSubject(Integer.parseInt(subjectId));
 			return subject;
 //			return new ResponseEntity<>(HttpStatus.OK);
 //		}
@@ -49,13 +49,13 @@ public class subjectController {
 	//add one student
 	@PostMapping("/subjects")
 	public Subject addSubject(@RequestBody Subject subject) {
-		return this.SubjectService.addSubject(subject);
+		return this.subjectService.addSubject(subject);
 	}
 	
 	//update one student detail
 	@PutMapping("/subjects")
 	public Subject updateSubjectt(@RequestBody Subject subject) {
-		return this.SubjectService.updateSubject(subject);
+		return this.subjectService.updateSubject(subject);
 		
 	}
 	
@@ -63,7 +63,7 @@ public class subjectController {
 	@DeleteMapping("/subjects/{subjectId}")
 	public ResponseEntity<HttpStatus> deleteSubject(@PathVariable String subjectId){
 		try {
-			this.SubjectService.deleteSubject(Integer.parseInt(subjectId));
+			this.subjectService.deleteSubject(Integer.parseInt(subjectId));
 			return new ResponseEntity<>(HttpStatus.OK);
 		}
 		catch(Exception e) {

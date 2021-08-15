@@ -2,12 +2,9 @@ package com.example.school.controller;
 
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,15 +14,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.school.entity.Student;
-import com.example.school.service.studentService;
+import com.example.school.service.StudentService;
 
 @RestController
-public class studentController {
+public class StudentController {
 	
-	private Logger logger = LoggerFactory.getLogger(studentController.class);
+
 	
 	@Autowired
-	private studentService StudentService;
+	private StudentService studentService;
 
 	@GetMapping("/home")
 	public String home() {
@@ -36,7 +33,7 @@ public class studentController {
 	@GetMapping("/students")
 	public List<Student> getStudents(){
 		
-		return this.StudentService.getStudents();
+		return this.studentService.getStudents();
 	}
 	
 	//get one student details
@@ -45,7 +42,7 @@ public class studentController {
 //		return this.StudentService.getStudent(Integer.parseInt(studentId));
 		
 		try {
-			this.StudentService.getStudent(Integer.parseInt(studentId));
+			this.studentService.getStudent(Integer.parseInt(studentId));
 			return new ResponseEntity<>(HttpStatus.OK);
 		}
 		catch(Exception e) {
@@ -57,13 +54,13 @@ public class studentController {
 	//add one student
 	@PostMapping("/students")
 	public Student addStudent(@RequestBody Student student) {
-		return this.StudentService.addStudent(student);
+		return this.studentService.addStudent(student);
 	}
 	
 	//update one student detail
 	@PutMapping("/students")
 	public Student updateStudent(@RequestBody Student student) {
-		return this.StudentService.updateStudent(student);
+		return this.studentService.updateStudent(student);
 		
 	}
 	
@@ -71,7 +68,7 @@ public class studentController {
 	@DeleteMapping("/students/{studentId}")
 	public ResponseEntity<HttpStatus> deleteStudent(@PathVariable String studentId){
 		try {
-			this.StudentService.deleteStudent(Integer.parseInt(studentId));
+			this.studentService.deleteStudent(Integer.parseInt(studentId));
 			return new ResponseEntity<>(HttpStatus.OK);
 		}
 		catch(Exception e) {
